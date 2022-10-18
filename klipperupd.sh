@@ -24,7 +24,7 @@ read -p "Выберите команду " step
 
 
 
-if [ $step -eq 1 ] 
+if [ $step -eq 1 ] 	#Обновление
 then 
 
 
@@ -35,13 +35,13 @@ git pull
 
 
 
-elif [ $step -eq 2 ]
+elif [ $step -eq 2 ] 	# Сборка
 then
 
 
 cd ~/klipper
 make config 
-								 #make menuconfig
+#make menuconfig
 make clean
 make
 
@@ -64,9 +64,9 @@ echo "Сервисы остановлены"
 echo " "
 
 
-sleep $z && gpio write  25 1  && echo "off"	& 				# Задержка №1 после начала прошивки
+sleep $z && gpio write  25 1  && echo "off"	& 				# Задержка подачи питания после начала прошивки
 sleep 0
-echo "flash"											# Задержка №2 перед началом прошивки
+echo "flash"									# Задержка №2 перед началом прошивки
 make flash FLASH_DEVICE=/dev/ttyS1 
 
 
